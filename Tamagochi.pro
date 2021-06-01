@@ -17,10 +17,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    scale.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    scale.h
 
 FORMS += \
     mainwindow.ui
@@ -29,3 +31,9 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    ../0b7ddef408fa9b600f1e57fef8bdaff3 (2).jpg
+
+RESOURCES += \
+    Resources.qrc
