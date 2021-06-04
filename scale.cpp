@@ -12,6 +12,16 @@ void Scale::decCurValue() {
         updateProgressBar();
     }
 }
+
+void Scale::addDefaultValue()
+{
+    addToCurValue(addValue);
+}
+
+void Scale::subDefaultValue(){
+    subFromCurValue(subValue);
+}
+
 void Scale::addToCurValue(int arg) {
     curValue = min(curValue + arg, maxValue);
     updateProgressBar();

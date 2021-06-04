@@ -3,6 +3,12 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
+enum Character {
+    NONE,
+    DOG,
+    CAT,
+    PANDA,
+};
 
 class Settings
 {
@@ -15,8 +21,13 @@ public:
     inline static Scale mood;
     inline static Scale clear;
     inline static Scale health;
+    inline static Character character;
     static void updateProgressBars();
 private:
+    void setDefaultSettings();
+    void setDogSettings();
+    void setCatSettings();
+    void setPandaSettings();
 };
 
 #endif // SETTINGS_H
