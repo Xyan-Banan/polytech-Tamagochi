@@ -1,4 +1,4 @@
-#include <QLabel>
+#include <QProgressBar>
 
 #ifndef SCALE_H
 #define SCALE_H
@@ -8,22 +8,19 @@ class Scale
 {
 public:
     //default constructor
-    Scale(): curValue(0), maxValue(0), curValueLabel(nullptr), maxValueLabel(nullptr){}
+    Scale(): curValue(100), maxValue(100), progressBar(nullptr){}
     //constructor with pair of "current value label" and "maximum value label"
-    Scale(QPair<QLabel*, QLabel*> labelsPair){
-        Scale(labelsPair.first,labelsPair.second);
-    }
-
-    Scale(QLabel* curValueLabel, QLabel* maxValueLabel){
+    Scale(QProgressBar* pB){
         //100 - default values at the beginning of the game for current and maximum value
-        Scale(100,100, curValueLabel, maxValueLabel);
+        Scale(100,100, pB);
     }
-    Scale(int maxValue, int curValue, QLabel* curValueLabel, QLabel* maxValueLabel):
+    Scale(int maxValue, int curValue, QProgressBar* pB):
         curValue(curValue),
         maxValue(maxValue){
         //setting labels text to its values
-        curValueLabel->setText(QString::number(curValue));
-        maxValueLabel->setText(QString::number(maxValue));
+        pB->setMaximum(maxValue);
+        pB->setMinimum(0);
+        pB->setValue(curValue);
     }
     int getMaxValue() {return maxValue;}
     int getCurValue() {return curValue;}
@@ -34,13 +31,13 @@ public:
     void addToCurValue(int arg);
     void subFromCurValue(int arg);
     // update current value label text
-    void updateCurValueLabel();
+    void updateProgressBar();
+    bool connectProgressBar(QProgressBar*);
 
 private:
     int curValue;
     int maxValue;
-    QLabel* curValueLabel;
-    QLabel* maxValueLabel;
+    QProgressBar* progressBar;
 
     int min(int a, int b){
         if(a < b) return a;

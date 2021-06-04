@@ -21,8 +21,9 @@ public:
 private:
     Ui::MainWindow *ui;
 
-    std::map<QString,QPair<QLabel*,QLabel*>> getLabelsList();
+    std::map<QString,QProgressBar*> getLabelsList();
     void initScale(Scale, QLabel*, QLabel*);
     void initScales();
+    void connectProgressBars();
 };
 #endif // MAINWINDOW_H

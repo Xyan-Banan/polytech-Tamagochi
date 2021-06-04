@@ -3,24 +3,34 @@
 void Scale::incCurValue() {
     if(curValue < maxValue) {
         curValue++;
-        updateCurValueLabel();
+        updateProgressBar();
     }
 }
 void Scale::decCurValue() {
     if(curValue > 0) {
         curValue--;
-        updateCurValueLabel();
+        updateProgressBar();
     }
 }
 void Scale::addToCurValue(int arg) {
     curValue = min(curValue + arg, maxValue);
-    updateCurValueLabel()
+    updateProgressBar();
 }
 void Scale::subFromCurValue(int arg) {
     curValue = max(curValue - arg, 0);
-    updateCurValueLabel();
+    updateProgressBar();
 }
 
-void Scale::updateCurValueLabel() {
-    curValueLabel->setText(QString::number(curValue));
+void Scale::updateProgressBar() {
+    progressBar->setValue(curValue);
+}
+
+bool Scale::connectProgressBar(QProgressBar * pB)
+{
+    if(pB != nullptr){
+        progressBar = pB;
+        return true;
+    }
+
+    return false;
 }

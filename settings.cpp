@@ -1,11 +1,29 @@
 #include "settings.h"
 
-Settings::Settings(std::map<QString,QPair<QLabel*,QLabel*>> labelsList)
+Settings::Settings(){
+        food = Scale();
+        sleep = Scale();
+        mood = Scale();
+        clear = Scale();
+        health = Scale();
+
+}
+
+Settings::Settings(std::map<QString,QProgressBar*> progressBars)
 {
-    food = Scale(labelsList.at("food"));
-    sleep = Scale(labelsList.at("sleep"));
-    mood = Scale(labelsList.at("mood"));
-    clear = Scale(labelsList.at("clear"));
-    health = Scale(labelsList.at("health"));
+//    food = Scale(progressBars.at("food"));
+//    sleep = Scale(progressBars.at("sleep"));
+//    mood = Scale(progressBars.at("mood"));
+//    clear = Scale(progressBars.at("clear"));
+    health = Scale(progressBars.at("health"));
+}
+
+void Settings::updateProgressBars()
+{
+    food.updateProgressBar();
+    sleep.updateProgressBar();
+    mood.updateProgressBar();
+    clear.updateProgressBar();
+    health.updateProgressBar();
 }
 
