@@ -16,7 +16,7 @@ public:
         subValue(DEFAULT_SUB_VALUE),
         progressBar(nullptr){}
 
-    //constructor with pair of "current value label" and "maximum value label"
+    //constructor with progress bar to connect
     Scale(QProgressBar* pB){
         //100 - default values at the beginning of the game for current and maximum value
         Scale(DEFAULT_CUR_VALUE,DEFAULT_MAX_VALUE, pB);

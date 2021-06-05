@@ -1,4 +1,5 @@
 #include "scale.h"
+#include <QQueue>
 
 #ifndef SETTINGS_H
 #define SETTINGS_H
@@ -8,6 +9,13 @@ enum Character {
     DOG,
     CAT,
     PANDA,
+};
+
+enum Action {
+    EAT,
+    SLEEP,
+    CLEAR,
+    PLAY
 };
 
 class Settings
@@ -22,6 +30,7 @@ public:
     inline static Scale clear;
     inline static Scale health;
     inline static Character character;
+    inline static QQueue<Action> actionQueue;
     static void updateProgressBars();
 private:
     void setDefaultSettings();

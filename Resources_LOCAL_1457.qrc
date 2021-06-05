@@ -6,8 +6,6 @@
         <file>Resources/images/Phone.jpg</file>
         <file>Resources/images/Cat10.jpg</file>
         <file>Resources/images/Phone1.jpg</file>
-        <file alias="background">Resources/images/background.jpg</file>
-        <file alias="character_dog">Resources/images/character_dog.png</file>
     </qresource>
     <qresource prefix="/icons">
         <file alias="icon_food">Resources/icons/1.png</file>

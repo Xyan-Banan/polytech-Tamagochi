@@ -1,5 +1,7 @@
 #include "settings.h"
 
+//QQueue<Action> Settings::actionQueue = QQueue<Action>();
+
 Settings::Settings(){
     switch (character) {
     case Character::DOG: setDogSettings(); break;
