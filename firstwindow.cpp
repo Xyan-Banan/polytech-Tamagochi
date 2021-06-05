@@ -16,11 +16,11 @@ FirstWindow::FirstWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    setPersBtnIcon(ui->Pers1BTN,":/images/Resources/images/Dog10.jpg");
-    setPersBtnIcon(ui->Pers2BTN,":/images/Resources/images/Panda10.jpg");
-    setPersBtnIcon(ui->Pers3BTN,":/images/Resources/images/Cat10.jpg");
+    setPersBtnIcon(ui->Pers1BTN,":/images/character_dog");
+    setPersBtnIcon(ui->Pers2BTN,":/images/character_panda");
+    setPersBtnIcon(ui->Pers3BTN,":/images/character_cat");
 
-    ui->TextLabel->setText("Привет Герой!");
+    ui->TextLabel->setText("Привет Герой!\nВыбери своего персонажа!");
 
     ui->TextLabel->setAlignment(Qt::AlignCenter);
 }

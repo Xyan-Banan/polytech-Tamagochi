@@ -31,6 +31,7 @@ void MainWindow::configureUpdateTimer()
     queueUpdateTimer->start(MILLISECONDS_PER_UPDATE);
 }
 
+
 void MainWindow::configureRandSubTimer()
 {
     randomSubTimer = new QTimer(this);
@@ -54,10 +55,10 @@ void MainWindow::chooseCharacterImage()
     switch (Settings::character) {
 
     case Character::CAT:
-        pM = QPixmap(":/images/Resources/images/Cat10.jpg");
+        pM = QPixmap(":/images/character_cat");
         break;
     case Character::PANDA:
-        pM = QPixmap(":/images/Resources/images/Panda10.jpg");
+        pM = QPixmap(":/images/character_panda");
         break;
     case Character::DOG:
     case Character::NONE:
@@ -72,10 +73,10 @@ QIcon MainWindow::getIconByAction(Action action)
 {
     QIcon icon;
     switch (action) {
-    case Action::EAT: icon = QIcon(":icons/icon_food"); break;
-    case Action::CLEAR: icon = QIcon(":icons/icon_clear"); break;
-    case Action::PLAY: icon = QIcon(":icons/icon_mood"); break;
-    case Action::SLEEP: icon = QIcon(":icons/icon_sleep"); break;
+    case Action::EAT: icon = QIcon(":icons/btn_icon_food"); break;
+    case Action::CLEAR: icon = QIcon(":icons/btn_icon_clean"); break;
+    case Action::PLAY: icon = QIcon(":icons/btn_icon_play"); break;
+    case Action::SLEEP: icon = QIcon(":icons/btn_icon_sleep"); break;
     }
     return icon;
 }

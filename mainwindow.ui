@@ -6,25 +6,60 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>777</width>
+    <height>583</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>777</width>
+    <height>583</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>777</width>
+    <height>583</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget#centralwidget {
-background-image:url(:/images/background);
-background-repeat: no-repeat;
-background-position: center;
-background-size: cover;
+border-image: url(:/images/background) 0 0 0 0 stretch stretch;
+
 }
 
 
 QVBoxLayout#queueLayout &gt; QPushButton:hover{
 border-color:red;
 background-color: red;
+}
+
+#clearButton, #eatButton, #sleepButton, #playButton{
+border: 2px solid black;
+border-radius: 10%;
+padding: 10px;
+background-color: white;
+background-position: center;
+}
+
+QPushButton:pressed {
+    background-color: beige;
+    border-style: inset;
+	border: 10px solid black;
+}
+
+QProgressBar {
+border: 2px solid gray;
+border-radius: 10px;
+background: white;
+padding: 1px;
+}
+QProgressBar::chunk:l {
+background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 0.5, stop: 0 #72F25F, stop: 1 #B5F7AB);
+border-radius: 10px;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -34,7 +69,7 @@ background-color: red;
       <x>50</x>
       <y>20</y>
       <width>691</width>
-      <height>126</height>
+      <height>140</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="statsLayout">
@@ -62,8 +97,7 @@ background-color: red;
        <item row="0" column="1">
         <widget class="QProgressBar" name="foodProgressBar">
          <property name="styleSheet">
-          <string notr="true">border: 2px solid grey;
-margin-left: 5px;</string>
+          <string notr="true"/>
          </property>
          <property name="maximum">
           <number>100</number>
@@ -118,8 +152,7 @@ margin-left: 5px;</string>
        <item row="0" column="1">
         <widget class="QProgressBar" name="sleepProgressBar">
          <property name="styleSheet">
-          <string notr="true">border: 2px solid grey;
-margin-left: 5px;</string>
+          <string notr="true"/>
          </property>
          <property name="maximum">
           <number>100</number>
@@ -155,8 +188,7 @@ margin-left: 5px;</string>
        <item row="0" column="1">
         <widget class="QProgressBar" name="moodProgressBar">
          <property name="styleSheet">
-          <string notr="true">border: 2px solid grey;
-margin-left: 5px;</string>
+          <string notr="true"/>
          </property>
          <property name="maximum">
           <number>100</number>
@@ -230,8 +262,7 @@ margin-left: 5px;</string>
        <item row="0" column="1">
         <widget class="QProgressBar" name="clearProgressBar">
          <property name="styleSheet">
-          <string notr="true">border: 2px solid grey;
-margin-left: 5px;</string>
+          <string notr="true"/>
          </property>
          <property name="maximum">
           <number>100</number>
@@ -286,8 +317,7 @@ margin-left: 5px;</string>
        <item row="0" column="1">
         <widget class="QProgressBar" name="healthProgressBar">
          <property name="styleSheet">
-          <string notr="true">border: 2px solid grey;
-margin-left: 5px;</string>
+          <string notr="true"/>
          </property>
          <property name="maximum">
           <number>100</number>
@@ -310,8 +340,8 @@ margin-left: 5px;</string>
    <widget class="QLabel" name="characterImage">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>220</y>
+      <x>250</x>
+      <y>200</y>
       <width>300</width>
       <height>300</height>
      </rect>
@@ -329,8 +359,8 @@ margin-left: 5px;</string>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>180</y>
+      <x>700</x>
+      <y>190</y>
       <width>52</width>
       <height>341</height>
      </rect>
@@ -358,6 +388,16 @@ margin-left: 5px;</string>
        </property>
        <property name="text">
         <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="Resources.qrc">
+         <normaloff>:/icons/icon_food</normaloff>:/icons/icon_food</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -519,37 +559,150 @@ margin-left: 5px;</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>170</y>
-      <width>171</width>
-      <height>381</height>
+      <y>180</y>
+      <width>81</width>
+      <height>371</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="actionsLayout">
      <item>
       <widget class="QPushButton" name="eatButton">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+         <horstretch>50</horstretch>
+         <verstretch>50</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>75</width>
+         <height>75</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background-image:url(:/icons/btn_icon_food);
+padding: 30px;
+}
+QPushButton:pressed {
+    background-color: beige;
+    border-style: inset;
+	border: 4px solid black;
+}</string>
+       </property>
        <property name="text">
-        <string>Кушоть</string>
+        <string/>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="clearButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>75</width>
+         <height>75</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background-image:url(:/icons/btn_icon_clean);
+}
+QPushButton:pressed {
+    background-color: beige;
+    border-style: inset;
+	border: 4px solid black;
+}
+</string>
+       </property>
        <property name="text">
-        <string>Какоть</string>
+        <string/>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="playButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>75</width>
+         <height>75</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background-image:url(:/icons/btn_icon_play);
+}
+QPushButton:pressed {
+    background-color: beige;
+    border-style: inset;
+	border: 4px solid black;
+}</string>
+       </property>
        <property name="text">
-        <string>Играть</string>
+        <string/>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="sleepButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+         <horstretch>60</horstretch>
+         <verstretch>60</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>75</width>
+         <height>75</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background-image:url(:/icons/btn_icon_sleep);
+}
+QPushButton:pressed {
+    background-color: beige;
+    border-style: inset;
+	border: 4px solid black;
+}
+
+</string>
+       </property>
        <property name="text">
-        <string>Спать</string>
+        <string/>
        </property>
       </widget>
      </item>
