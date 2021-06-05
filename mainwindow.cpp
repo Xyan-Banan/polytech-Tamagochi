@@ -39,6 +39,12 @@ void MainWindow::configureRandSubTimer()
     randomSubTimer->start(MILLISECONDS_PER_SUBTRACTION);
 }
 
+void MainWindow::removeElementFromQueue(int index)
+{
+    Settings::actionQueue.removeAt(index);
+    updateQueue();
+}
+
 void MainWindow::connectProgressBars()
 {
     Settings::food.connectProgressBar(ui->foodProgressBar);
@@ -104,10 +110,11 @@ void MainWindow::updateQueue()
             Action action = Settings::actionQueue[i];
             qb->setIcon(getIconByAction(action));
             qb->setIconSize(QSize(qb->size()));
-            qb->setVisible(true);
+            qb->setEnabled(true);
         }
         else{
-            qb->setVisible(false);
+            qb->setEnabled(false);
+            qb->setIcon(QIcon());
         }
     }
 }
@@ -151,11 +158,20 @@ void MainWindow::subtractRandomStat()
     int actionInd = rand() % 4;
     qDebug()<< "choosed action " << actionInd;
     switch (actionInd) {
-    case Action::EAT: Settings::food.subDefaultValue(); break;
-    case Action::CLEAR: Settings::clear.subDefaultValue(); break;
-    case Action::PLAY: Settings::mood.subDefaultValue(); break;
-    case Action::SLEEP: Settings::sleep.subDefaultValue(); break;
+    case Action::EAT: Settings::food.decCurValue(); break;
+    case Action::CLEAR: Settings::clear.decCurValue(); break;
+    case Action::PLAY: Settings::mood.decCurValue(); break;
+    case Action::SLEEP: Settings::sleep.decCurValue(); break;
     }
+
+    actionInd = rand() % 4;
+        qDebug()<< "choosed action " << actionInd;
+        switch (actionInd) {
+        case Action::EAT: Settings::food.decCurValue(); break;
+        case Action::CLEAR: Settings::clear.decCurValue(); break;
+        case Action::PLAY: Settings::mood.decCurValue(); break;
+        case Action::SLEEP: Settings::sleep.decCurValue(); break;
+        }
     updateQueue();
 }
 
@@ -190,3 +206,35 @@ void MainWindow::on_sleepButton_clicked()
         updateQueue();
     }
 }
+
+
+
+void MainWindow::on_queue1Button_clicked()
+{
+    removeElementFromQueue(0);
+}
+
+
+void MainWindow::on_queue2Button_clicked()
+{
+    removeElementFromQueue(1);
+}
+
+
+void MainWindow::on_queue3Button_clicked()
+{
+    removeElementFromQueue(2);
+}
+
+
+void MainWindow::on_queue4Button_clicked()
+{
+    removeElementFromQueue(3);
+}
+
+
+void MainWindow::on_queue5Button_clicked()
+{
+    removeElementFromQueue(4);
+}
+

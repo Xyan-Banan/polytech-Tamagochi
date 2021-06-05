@@ -31,12 +31,22 @@ private slots:
 
     void on_sleepButton_clicked();
 
+    void on_queue1Button_clicked();
+
+    void on_queue2Button_clicked();
+
+    void on_queue3Button_clicked();
+
+    void on_queue4Button_clicked();
+
+    void on_queue5Button_clicked();
+
 private:
     Ui::MainWindow *ui;
 
-    inline static int MILLISECONDS_PER_ACTION = 5000;
-    inline static int MILLISECONDS_PER_UPDATE = 50;
-    inline static int MILLISECONDS_PER_SUBTRACTION = 2000;
+    inline static const int MILLISECONDS_PER_ACTION = 3000;
+    inline static const int MILLISECONDS_PER_UPDATE = 50;
+    inline static const int MILLISECONDS_PER_SUBTRACTION = 1000;
 
     QTimer* actionTimer;
     QTimer* queueUpdateTimer;
@@ -57,6 +67,7 @@ private:
     void configureUpdateTimer();
     void configureRandSubTimer();
 
+    void removeElementFromQueue(int);
     QList<QPushButton*> getQueueButtons();
     QIcon getIconByAction(Action);
 };

@@ -389,10 +389,6 @@ border-radius: 10px;
        <property name="text">
         <string/>
        </property>
-       <property name="icon">
-        <iconset resource="Resources.qrc">
-         <normaloff>:/icons/icon_food</normaloff>:/icons/icon_food</iconset>
-       </property>
        <property name="iconSize">
         <size>
          <width>50</width>
