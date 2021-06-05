@@ -25,12 +25,13 @@ private slots:
 
     void on_Pers3BTN_clicked();
 
-    void on_SelectBTN_2_clicked();
+    void on_SelectBTN_clicked();
 
 private:
     Ui::FirstWindow *ui;
     inline static const QString NO_BORDER_STYLE = "border: 1px solid black; padding: 5px; border-radius: 10%; background-color: white;";
     inline static const QString BORDERED_STYLE ="border: 5px solid #66CDAA;border-radius: 10%; background-color: white;";
+    void setPersBtnIcon(QPushButton*, QString);
 };
 
 #endif // FIRSTWINDOW_H

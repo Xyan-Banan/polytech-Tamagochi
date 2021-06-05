@@ -6,8 +6,9 @@
         <file>Resources/images/Phone.jpg</file>
         <file>Resources/images/Cat10.jpg</file>
         <file>Resources/images/Phone1.jpg</file>
-        <file alias="background">Resources/images/background.jpg</file>
+        <file>Resources/images/Phone.jpg</file>
         <file alias="character_dog">Resources/images/character_dog.png</file>
+        <file alias="background">Resources/images/background.jpg</file>
     </qresource>
     <qresource prefix="/icons">
         <file alias="icon_food">Resources/icons/1.png</file>
@@ -15,8 +16,5 @@
         <file alias="icon_mood">Resources/icons/3.png</file>
         <file alias="icon_clear">Resources/icons/4.jpg</file>
         <file alias="icon_health">Resources/icons/6.png</file>
-    </qresource>
-    <qresource prefix="/">
-        <file>Resources/images/Phone.jpg</file>
     </qresource>
 </RCC>

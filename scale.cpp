@@ -44,3 +44,8 @@ bool Scale::connectProgressBar(QProgressBar * pB)
 
     return false;
 }
+
+void Scale::setCurValue(int newCurValue)
+{
+    curValue = newCurValue;
+}

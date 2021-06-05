@@ -48,6 +48,7 @@ public:
     }
     int getMaxValue() {return maxValue;}
     int getCurValue() {return curValue;}
+    void setCurValue(int);
     //increment/decrements current value with check and update curValueLabel text
     void incCurValue();
     void decCurValue();
@@ -65,6 +66,7 @@ public:
     static const int DEFAULT_MAX_VALUE = 100;
     static const int DEFAULT_ADD_VALUE = 15;
     static const int DEFAULT_SUB_VALUE = 8;
+
 
 private:
     int curValue;
