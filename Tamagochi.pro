@@ -16,17 +16,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    firstwindow.cpp \
     main.cpp \
     mainwindow.cpp \
     scale.cpp \
     settings.cpp
 
 HEADERS += \
+    firstwindow.h \
     mainwindow.h \
     scale.h \
     settings.h
 
 FORMS += \
+    firstwindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.
