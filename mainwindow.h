@@ -44,9 +44,9 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    inline static const int MILLISECONDS_PER_ACTION = 5000;
+    inline static const int MILLISECONDS_PER_ACTION = 3000;
     inline static const int MILLISECONDS_PER_UPDATE = 50;
-    inline static const int MILLISECONDS_PER_SUBTRACTION = 100;
+    inline static const int MILLISECONDS_PER_SUBTRACTION = 400;
 
     QTimer* actionTimer;
     QTimer* queueUpdateTimer;
