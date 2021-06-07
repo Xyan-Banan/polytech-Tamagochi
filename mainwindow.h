@@ -72,6 +72,9 @@ private:
 
     void countHealth();
     bool isGameover();
+    void gameoverActions();
+    void disableButtons();
+    void dropStats();
 
     QList<QPushButton*> getActionButtons();
     QList<QPushButton*> getQueueButtons();
@@ -79,7 +82,5 @@ private:
     void removeActionFromQueue(int);
     QIcon getIconByAction(Action);
 
-    void gameoverActions();
-    void disableButtons();
 };
 #endif // MAINWINDOW_H

@@ -22,8 +22,7 @@ class Settings
 {
 public:
     Settings();
-    Settings(std::map<QString,QProgressBar*>);
-    //creature parameters
+    //character parameters
     inline static Scale food;
     inline static Scale sleep;
     inline static Scale mood;
