@@ -26,7 +26,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Tamagochi</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Resources.qrc">
+    <normaloff>:/icons/icon_app</normaloff>:/icons/icon_app</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget#centralwidget {
@@ -59,7 +63,8 @@ QProgressBar {
 border: 2px solid gray;
 border-radius: 10px;
 background: white;
-padding: 1px;
+color: rgba(0,0,0,0);
+padding: 2px;
 }
 QProgressBar::chunk:l {
 background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 0.5, stop: 0 #72F25F, stop: 1 #B5F7AB);
@@ -111,7 +116,7 @@ background-position: center;
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>:/icons/icon_food</pixmap>
+          <pixmap resource="Resources.qrc">:/icons/icon_food</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -166,7 +171,7 @@ background-position: center;
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>:/icons/icon_sleep</pixmap>
+          <pixmap resource="Resources.qrc">:/icons/icon_sleep</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -240,7 +245,7 @@ background-position: center;
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>:/icons/icon_mood</pixmap>
+          <pixmap resource="Resources.qrc">:/icons/icon_mood</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -276,7 +281,7 @@ background-position: center;
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>:/icons/icon_clear</pixmap>
+          <pixmap resource="Resources.qrc">:/icons/icon_clear</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -350,7 +355,7 @@ background-position: center;
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>:/icons/icon_health</pixmap>
+          <pixmap resource="Resources.qrc">:/icons/icon_health</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -374,7 +379,7 @@ background-position: center;
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>:/images/character_dog</pixmap>
+     <pixmap resource="Resources.qrc">:/images/character_dog</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -413,6 +418,9 @@ background-position: center;
          <height>50</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>Click me to remove action from queue</string>
+       </property>
        <property name="styleSheet">
         <string notr="true"/>
        </property>
@@ -429,50 +437,6 @@ background-position: center;
      </item>
      <item>
       <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>0</width>
-         <height>0</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="queue3Button">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>50</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>50</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="verticalSpacer_2">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -507,6 +471,9 @@ background-position: center;
          <height>50</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>Click me to remove action from queue</string>
+       </property>
        <property name="styleSheet">
         <string notr="true"/>
        </property>
@@ -517,6 +484,53 @@ background-position: center;
      </item>
      <item>
       <spacer name="verticalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="queue3Button">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>Click me to remove action from queue</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_2">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -550,6 +564,9 @@ background-position: center;
          <width>50</width>
          <height>50</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string>Click me to remove action from queue</string>
        </property>
        <property name="styleSheet">
         <string notr="true"/>
@@ -595,6 +612,9 @@ background-position: center;
          <height>16777215</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>Click me to remove action from queue</string>
+       </property>
        <property name="styleSheet">
         <string notr="true"/>
        </property>
@@ -638,6 +658,12 @@ background-position: center;
          <height>75</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>Press me and I'm gonna eat the best food!</string>
+       </property>
+       <property name="statusTip">
+        <string>Eat!</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 background-image:url(:/icons/btn_icon_food);
@@ -677,6 +703,12 @@ QPushButton:pressed {
          <height>75</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>Press me! I love shower!</string>
+       </property>
+       <property name="statusTip">
+        <string>Clean!</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 background-image:url(:/icons/btn_icon_clean);
@@ -714,6 +746,12 @@ QPushButton:pressed {
          <height>75</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>Great! Let's play!</string>
+       </property>
+       <property name="statusTip">
+        <string>Play!</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 background-image:url(:/icons/btn_icon_play);
@@ -743,6 +781,12 @@ QPushButton:pressed {
          <height>75</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>I'm tired? Maybe a little bit</string>
+       </property>
+       <property name="statusTip">
+        <string>Sleep!</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 background-image:url(:/icons/btn_icon_sleep);
@@ -762,9 +806,38 @@ QPushButton:pressed {
      </item>
     </layout>
    </widget>
+   <widget class="QLabel" name="timerLabel">
+    <property name="geometry">
+     <rect>
+      <x>696</x>
+      <y>227</y>
+      <width>50</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+      <strikeout>false</strikeout>
+      <kerning>true</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>Time!</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

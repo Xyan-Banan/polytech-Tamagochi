@@ -44,13 +44,14 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    inline static const int MILLISECONDS_PER_ACTION = 500;
+    inline static const int MILLISECONDS_PER_ACTION = 5000;
     inline static const int MILLISECONDS_PER_UPDATE = 50;
     inline static const int MILLISECONDS_PER_SUBTRACTION = 100;
 
     QTimer* actionTimer;
     QTimer* queueUpdateTimer;
     QTimer* randomSubTimer;
+    QList<QPushButton*> actionButtons;
     QList<QPushButton*> queueButtons;
 
     std::map<QString,QProgressBar*> getLabelsList();
@@ -72,6 +73,7 @@ private:
     void countHealth();
     bool isGameover();
 
+    QList<QPushButton*> getActionButtons();
     QList<QPushButton*> getQueueButtons();
     void addActionToQueue(Action);
     void removeActionFromQueue(int);

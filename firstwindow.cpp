@@ -1,7 +1,6 @@
 #include "firstwindow.h"
 #include "mainwindow.h"
 #include "ui_firstwindow.h"
-//FirstWindow::NO_BORDER_
 
 void FirstWindow::setPersBtnIcon(QPushButton* btn, QString src)
 {
@@ -15,14 +14,14 @@ FirstWindow::FirstWindow(QWidget *parent) :
     ui(new Ui::FirstWindow)
 {
     ui->setupUi(this);
+    //disable question mark button
+//    setWindowFlag(Qt::WindowContextHelpButtonHint,false);
 
     setPersBtnIcon(ui->Pers1BTN,":/images/character_dog");
     setPersBtnIcon(ui->Pers2BTN,":/images/character_panda");
     setPersBtnIcon(ui->Pers3BTN,":/images/character_cat");
 
     ui->TextLabel->setText("Привет Герой!\nВыбери своего персонажа!");
-
-    ui->TextLabel->setAlignment(Qt::AlignCenter);
 }
 
 FirstWindow::~FirstWindow()

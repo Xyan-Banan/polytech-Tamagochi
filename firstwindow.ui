@@ -36,24 +36,12 @@
     <bold>true</bold>
    </font>
   </property>
-  <property name="contextMenuPolicy">
-   <enum>Qt::NoContextMenu</enum>
-  </property>
   <property name="windowTitle">
    <string notr="true"/>
   </property>
   <property name="windowIcon">
    <iconset resource="Resources.qrc">
     <normaloff>:/icons/icon_app</normaloff>:/icons/icon_app</iconset>
-  </property>
-  <property name="windowOpacity">
-   <double>1.000000000000000</double>
-  </property>
-  <property name="toolTip">
-   <string notr="true"/>
-  </property>
-  <property name="autoFillBackground">
-   <bool>false</bool>
   </property>
   <property name="styleSheet">
    <string notr="true">background-image: url(:/images/background_first);</string>
@@ -156,9 +144,6 @@ background-color: white;</string>
         <width>100</width>
         <height>100</height>
        </size>
-      </property>
-      <property name="whatsThis">
-       <string>pANDaaaaaaa</string>
       </property>
       <property name="styleSheet">
        <string notr="true">border: 1px solid black;
@@ -271,6 +256,12 @@ width : 100%;</string>
    </property>
    <property name="text">
     <string>Hello Hero!</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::PlainText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>

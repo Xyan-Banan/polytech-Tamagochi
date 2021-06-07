@@ -15,12 +15,25 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::startGameActions()
 {
     queueButtons = getQueueButtons();
+    actionButtons = getActionButtons();
     new Settings();
     connectProgressBars();
     chooseCharacterImage();
     configureActionTimer();
     configureUpdateTimer();
     configureRandSubTimer();
+}
+
+QList<QPushButton *> MainWindow::getActionButtons()
+{
+    qDebug() << "i'm here!";
+    QList<QPushButton*> list = {
+        ui->eatButton,
+        ui->sleepButton,
+        ui->clearButton,
+        ui->playButton,
+    };
+    return list;
 }
 
 QList<QPushButton *> MainWindow::getQueueButtons()
@@ -62,7 +75,7 @@ void MainWindow::countHealth()
             + Settings::clear.isCurValEmpty()
             + Settings::mood.isCurValEmpty()
             + Settings::sleep.isCurValEmpty();
-//    qDebug() << "count empty " << countEmpty <<" subtracting " << Settings::health.getSubValue()*countEmpty;
+    //    qDebug() << "count empty " << countEmpty <<" subtracting " << Settings::health.getSubValue()*countEmpty;
     if(countEmpty > 0){
         Settings::health.subFromCurValue(Settings::health.getSubValue() * countEmpty);
     }
@@ -123,6 +136,7 @@ void MainWindow::updateQueue()
     //no actions in queue and timer is active -> need to stop timer
     if(actionsCount == 0 && actionTimer->isActive()){
         actionTimer->stop();
+        ui->timerLabel->setVisible(false);
         qDebug() << "timer stopped";
         qDebug() << "is active "<< actionTimer->isActive();
         qDebug() << "remaining Time "<< actionTimer->remainingTime();
@@ -131,11 +145,13 @@ void MainWindow::updateQueue()
     //there IS actions in queue and timer is NOT active -> need to restart timer
     if(actionsCount > 0 && !actionTimer->isActive()) {
         actionTimer->start(MILLISECONDS_PER_ACTION);
+        ui->timerLabel->setVisible(true);
         qDebug() << "timer started";
         qDebug() << "is active "<< actionTimer->isActive();
         qDebug() << "remaining Time "<< actionTimer->remainingTime();
     }
 
+    ui->timerLabel->setText(QString::number(actionTimer->remainingTime()/1000 + 1));
     for(int i = 0; i < queueButtons.count(); i++){
         QPushButton* qb = queueButtons[i];
         if(i < actionsCount){
@@ -175,18 +191,24 @@ void MainWindow::performQueueAction()
 
 void MainWindow::disableButtons()
 {
-    ui->eatButton->setEnabled(false);
-    ui->sleepButton->setEnabled(false);
-    ui->clearButton->setEnabled(false);
-    ui->playButton->setEnabled(false);
+    for(int i = 0; i < actionButtons.count(); i++){
+        actionButtons[i]->setEnabled(false);
+    }
+
+    for(int i = 0; i < queueButtons.count();i++){
+        queueButtons[i]->setEnabled(false);
+        queueButtons[i]->setIcon(QIcon());
+    }
 }
 
 void MainWindow::gameoverActions()
 {
     actionTimer->stop();
+    ui->timerLabel->setVisible(false);
     queueUpdateTimer->stop();
     randomSubTimer->stop();
     disableButtons();
+
     ui->characterImage->setPixmap(QPixmap(":/images/grave"));
     ui->statusbar->showMessage("you, bastard, you killed him!");
     //show message
@@ -194,7 +216,7 @@ void MainWindow::gameoverActions()
 
 void MainWindow::subtractStatByInd(int actionInd)
 {
-//    qDebug()<< "choosed action " << actionInd;
+    //    qDebug()<< "choosed action " << actionInd;
     switch (actionInd) {
     case Action::EAT: Settings::food.subDefaultValue(); break;
     case Action::CLEAR: Settings::clear.subDefaultValue(); break;
@@ -206,7 +228,7 @@ void MainWindow::subtractStatByInd(int actionInd)
 
 void MainWindow::subtractRandomStat()
 {
-//    qDebug()<< "performing random subtraction " << time(NULL) % 60;
+    //    qDebug()<< "performing random subtraction " << time(NULL) % 60;
     subtractStatByInd(rand() % 4);
     subtractStatByInd(rand() % 4);
 
