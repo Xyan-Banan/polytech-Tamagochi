@@ -2,12 +2,18 @@
 #include "ui_mainwindow.h"
 
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
+    startGameActions();
+}
+
+void MainWindow::startGameActions()
+{
     queueButtons = getQueueButtons();
     new Settings();
     connectProgressBars();
@@ -16,6 +22,19 @@ MainWindow::MainWindow(QWidget *parent)
     configureUpdateTimer();
     configureRandSubTimer();
 }
+
+QList<QPushButton *> MainWindow::getQueueButtons()
+{
+    QList<QPushButton*> list = {
+        ui->queue1Button,
+        ui->queue2Button,
+        ui->queue3Button,
+        ui->queue4Button,
+        ui->queue5Button,
+    };
+    return list;
+}
+
 void MainWindow::configureActionTimer()
 {
     actionTimer = new QTimer(this);
@@ -27,10 +46,8 @@ void MainWindow::configureUpdateTimer()
 {
     queueUpdateTimer = new QTimer(this);
     connect(queueUpdateTimer, &QTimer::timeout, this, &MainWindow::updateQueue);
-    connect(queueUpdateTimer, &QTimer::timeout, this, &MainWindow::updateQueue);
     queueUpdateTimer->start(MILLISECONDS_PER_UPDATE);
 }
-
 
 void MainWindow::configureRandSubTimer()
 {
@@ -39,11 +56,23 @@ void MainWindow::configureRandSubTimer()
     randomSubTimer->start(MILLISECONDS_PER_SUBTRACTION);
 }
 
-void MainWindow::removeElementFromQueue(int index)
+void MainWindow::countHealth()
 {
-    Settings::actionQueue.removeAt(index);
-    updateQueue();
+    int countEmpty = Settings::food.isCurValEmpty()
+            + Settings::clear.isCurValEmpty()
+            + Settings::mood.isCurValEmpty()
+            + Settings::sleep.isCurValEmpty();
+//    qDebug() << "count empty " << countEmpty <<" subtracting " << Settings::health.getSubValue()*countEmpty;
+    if(countEmpty > 0){
+        Settings::health.subFromCurValue(Settings::health.getSubValue() * countEmpty);
+    }
 }
+
+bool MainWindow::isGameover()
+{
+    return Settings::health.isCurValEmpty();
+}
+
 
 void MainWindow::connectProgressBars()
 {
@@ -91,12 +120,15 @@ void MainWindow::updateQueue()
 {
     int actionsCount = Settings::actionQueue.count();
 
+    //no actions in queue and timer is active -> need to stop timer
     if(actionsCount == 0 && actionTimer->isActive()){
         actionTimer->stop();
         qDebug() << "timer stopped";
         qDebug() << "is active "<< actionTimer->isActive();
         qDebug() << "remaining Time "<< actionTimer->remainingTime();
     }
+
+    //there IS actions in queue and timer is NOT active -> need to restart timer
     if(actionsCount > 0 && !actionTimer->isActive()) {
         actionTimer->start(MILLISECONDS_PER_ACTION);
         qDebug() << "timer started";
@@ -119,17 +151,6 @@ void MainWindow::updateQueue()
     }
 }
 
-QList<QPushButton *> MainWindow::getQueueButtons()
-{
-    QList<QPushButton*> list = {
-        ui->queue1Button,
-        ui->queue2Button,
-        ui->queue3Button,
-        ui->queue4Button,
-        ui->queue5Button,
-    };
-    return list;
-}
 
 
 MainWindow::~MainWindow()
@@ -152,89 +173,110 @@ void MainWindow::performQueueAction()
     }
 }
 
+void MainWindow::disableButtons()
+{
+    ui->eatButton->setEnabled(false);
+    ui->sleepButton->setEnabled(false);
+    ui->clearButton->setEnabled(false);
+    ui->playButton->setEnabled(false);
+}
+
+void MainWindow::gameoverActions()
+{
+    actionTimer->stop();
+    queueUpdateTimer->stop();
+    randomSubTimer->stop();
+    disableButtons();
+    ui->characterImage->setPixmap(QPixmap(":/images/grave"));
+    ui->statusbar->showMessage("you, bastard, you killed him!");
+    //show message
+}
+
+void MainWindow::subtractStatByInd(int actionInd)
+{
+//    qDebug()<< "choosed action " << actionInd;
+    switch (actionInd) {
+    case Action::EAT: Settings::food.subDefaultValue(); break;
+    case Action::CLEAR: Settings::clear.subDefaultValue(); break;
+    case Action::PLAY: Settings::mood.subDefaultValue(); break;
+    case Action::SLEEP: Settings::sleep.subDefaultValue(); break;
+    default: break;
+    }
+}
+
 void MainWindow::subtractRandomStat()
 {
-    qDebug()<< "performing random subtraction " << time(NULL);
-    int actionInd = rand() % 4;
-    qDebug()<< "choosed action " << actionInd;
-    switch (actionInd) {
-    case Action::EAT: Settings::food.decCurValue(); break;
-    case Action::CLEAR: Settings::clear.decCurValue(); break;
-    case Action::PLAY: Settings::mood.decCurValue(); break;
-    case Action::SLEEP: Settings::sleep.decCurValue(); break;
-    }
+//    qDebug()<< "performing random subtraction " << time(NULL) % 60;
+    subtractStatByInd(rand() % 4);
+    subtractStatByInd(rand() % 4);
 
-    actionInd = rand() % 4;
-        qDebug()<< "choosed action " << actionInd;
-        switch (actionInd) {
-        case Action::EAT: Settings::food.decCurValue(); break;
-        case Action::CLEAR: Settings::clear.decCurValue(); break;
-        case Action::PLAY: Settings::mood.decCurValue(); break;
-        case Action::SLEEP: Settings::sleep.decCurValue(); break;
-        }
-    updateQueue();
+    countHealth();
+    if(isGameover()){
+        gameoverActions();
+    }
+}
+
+void MainWindow::addActionToQueue(Action action)
+{
+    if(Settings::actionQueue.count() < queueButtons.count()){
+        Settings::actionQueue.enqueue(action);
+        updateQueue();
+    }
 }
 
 void MainWindow::on_eatButton_clicked()
 {
-    if(Settings::actionQueue.count() < queueButtons.count()){
-        Settings::actionQueue.enqueue(Action::EAT);
-        updateQueue();
-    }
+    addActionToQueue(Action::EAT);
 }
 
 void MainWindow::on_clearButton_clicked()
 {
-    if(Settings::actionQueue.count() < queueButtons.count()){
-        Settings::actionQueue.enqueue(Action::CLEAR);
-        updateQueue();
-    }
+    addActionToQueue(Action::CLEAR);
 }
 
 void MainWindow::on_playButton_clicked()
 {
-    if(Settings::actionQueue.count() < queueButtons.count()){
-        Settings::actionQueue.enqueue(Action::PLAY);
-        updateQueue();
-    }
+    addActionToQueue(Action::PLAY);
 }
 
 void MainWindow::on_sleepButton_clicked()
 {
-    if(Settings::actionQueue.count() < queueButtons.count()){
-        Settings::actionQueue.enqueue(Action::SLEEP);
-        updateQueue();
-    }
+    addActionToQueue(Action::SLEEP);
 }
 
 
+void MainWindow::removeActionFromQueue(int index)
+{
+    Settings::actionQueue.removeAt(index);
+    updateQueue();
+}
 
 void MainWindow::on_queue1Button_clicked()
 {
-    removeElementFromQueue(0);
+    removeActionFromQueue(0);
 }
 
 
 void MainWindow::on_queue2Button_clicked()
 {
-    removeElementFromQueue(1);
+    removeActionFromQueue(1);
 }
 
 
 void MainWindow::on_queue3Button_clicked()
 {
-    removeElementFromQueue(2);
+    removeActionFromQueue(2);
 }
 
 
 void MainWindow::on_queue4Button_clicked()
 {
-    removeElementFromQueue(3);
+    removeActionFromQueue(3);
 }
 
 
 void MainWindow::on_queue5Button_clicked()
 {
-    removeElementFromQueue(4);
+    removeActionFromQueue(4);
 }
 

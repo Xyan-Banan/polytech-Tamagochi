@@ -23,11 +23,24 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Tamagochi</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Resources.qrc">
+    <normaloff>:/icons/icon_app</normaloff>:/icons/icon_app</iconset>
+  </property>
+  <property name="toolTip">
+   <string>i'm button</string>
+  </property>
+  <property name="statusTip">
+   <string>eat</string>
+  </property>
+  <property name="whatsThis">
+   <string>fooood</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget#centralwidget {
-border-image: url(:/images/background) 0 0 0 0 stretch stretch;
+border-image: url(:/images/background_main) 0 0 0 0 stretch stretch;
 
 }
 
@@ -55,11 +68,14 @@ QProgressBar {
 border: 2px solid gray;
 border-radius: 10px;
 background: white;
-padding: 1px;
+padding: 2px;
+color: rgba(0, 0, 0, 0);
 }
+
 QProgressBar::chunk:l {
 background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 0.5, stop: 0 #72F25F, stop: 1 #B5F7AB);
-border-radius: 10px;
+border-radius: 0px;
+
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -106,10 +122,13 @@ border-radius: 10px;
           <number>33</number>
          </property>
          <property name="textVisible">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="orientation">
           <enum>Qt::Vertical</enum>
+         </property>
+         <property name="invertedAppearance">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -117,116 +136,6 @@ border-radius: 10px;
      </item>
      <item>
       <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>0</width>
-         <height>0</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0" rowspan="2">
-        <widget class="QLabel" name="label_6">
-         <property name="maximumSize">
-          <size>
-           <width>50</width>
-           <height>50</height>
-          </size>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap resource="Resources.qrc">:/icons/icon_sleep</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QProgressBar" name="sleepProgressBar">
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-         <property name="value">
-          <number>33</number>
-         </property>
-         <property name="textVisible">
-          <bool>false</bool>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>0</width>
-         <height>0</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <layout class="QGridLayout" name="gridLayout_4">
-       <item row="0" column="1">
-        <widget class="QProgressBar" name="moodProgressBar">
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-         <property name="value">
-          <number>33</number>
-         </property>
-         <property name="textVisible">
-          <bool>false</bool>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" rowspan="2">
-        <widget class="QLabel" name="label_12">
-         <property name="maximumSize">
-          <size>
-           <width>50</width>
-           <height>50</height>
-          </size>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap resource="Resources.qrc">:/icons/icon_mood</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_3">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -271,10 +180,129 @@ border-radius: 10px;
           <number>33</number>
          </property>
          <property name="textVisible">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="orientation">
           <enum>Qt::Vertical</enum>
+         </property>
+         <property name="invertedAppearance">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="1">
+        <widget class="QProgressBar" name="moodProgressBar">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+         <property name="value">
+          <number>33</number>
+         </property>
+         <property name="textVisible">
+          <bool>true</bool>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="invertedAppearance">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" rowspan="2">
+        <widget class="QLabel" name="label_12">
+         <property name="maximumSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="Resources.qrc">:/icons/icon_mood</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0" rowspan="2">
+        <widget class="QLabel" name="label_6">
+         <property name="maximumSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="Resources.qrc">:/icons/icon_sleep</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QProgressBar" name="sleepProgressBar">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+         <property name="value">
+          <number>33</number>
+         </property>
+         <property name="textVisible">
+          <bool>true</bool>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="invertedAppearance">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -326,10 +354,13 @@ border-radius: 10px;
           <number>33</number>
          </property>
          <property name="textVisible">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <property name="orientation">
           <enum>Qt::Vertical</enum>
+         </property>
+         <property name="invertedAppearance">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -584,6 +615,15 @@ border-radius: 10px;
          <height>75</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>i'm button</string>
+       </property>
+       <property name="statusTip">
+        <string>eat</string>
+       </property>
+       <property name="whatsThis">
+        <string>fooood</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 background-image:url(:/icons/btn_icon_food);
@@ -597,6 +637,9 @@ QPushButton:pressed {
        </property>
        <property name="text">
         <string/>
+       </property>
+       <property name="shortcut">
+        <string>1</string>
        </property>
       </widget>
      </item>

@@ -1,10 +1,11 @@
 <RCC>
     <qresource prefix="/images">
-        <file>Resources/images/Phone1.jpg</file>
+        <file alias="background_first">Resources/images/background_first.jpg</file>
         <file alias="character_dog">Resources/images/character_dog.png</file>
-        <file alias="background">Resources/images/Phone3.jpg</file>
+        <file alias="background_main">Resources/images/background_main.jpg</file>
         <file alias="character_cat">Resources/images/character_cat.png</file>
         <file alias="character_panda">Resources/images/character_panda.png</file>
+        <file alias="grave">Resources/images/grave.png</file>
     </qresource>
     <qresource prefix="/icons">
         <file alias="icon_sleep">Resources/images/Icons/029-sleep.png</file>
@@ -16,5 +17,6 @@
         <file alias="btn_icon_food">Resources/images/Icons/dog-food.png</file>
         <file alias="btn_icon_play">Resources/images/Icons/tennis-balls.png</file>
         <file alias="btn_icon_sleep">Resources/images/Icons/pillow.png</file>
+        <file alias="icon_app">Resources/images/Icons/icon_app.png</file>
     </qresource>
 </RCC>

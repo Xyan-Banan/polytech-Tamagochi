@@ -48,7 +48,11 @@ public:
     }
     int getMaxValue() {return maxValue;}
     int getCurValue() {return curValue;}
+    int getAddValue() {return addValue;}
+    int getSubValue() {return subValue;}
     void setCurValue(int);
+
+    bool isCurValEmpty() {return curValue == 0;}
     //increment/decrements current value with check and update curValueLabel text
     void incCurValue();
     void decCurValue();
@@ -65,7 +69,7 @@ public:
     static const int DEFAULT_CUR_VALUE = 100;
     static const int DEFAULT_MAX_VALUE = 100;
     static const int DEFAULT_ADD_VALUE = 15;
-    static const int DEFAULT_SUB_VALUE = 8;
+    static const int DEFAULT_SUB_VALUE = 1;
 
 
 private:
