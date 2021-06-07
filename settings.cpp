@@ -43,7 +43,7 @@ void Settings::setDogSettings()
     // TODO: change to actual DOG values
     food = Scale(Scale::DEFAULT_ADD_VALUE, Scale::DEFAULT_SUB_VALUE);
     sleep = Scale(Scale::DEFAULT_ADD_VALUE, Scale::DEFAULT_SUB_VALUE);
-    mood = Scale(Scale::DEFAULT_ADD_VALUE, Scale::DEFAULT_SUB_VALUE);
+    mood = Scale(25, 2);
     clear = Scale(Scale::DEFAULT_ADD_VALUE, Scale::DEFAULT_SUB_VALUE);
     health = Scale(Scale::DEFAULT_ADD_VALUE, Scale::DEFAULT_SUB_VALUE);
 }
@@ -54,7 +54,7 @@ void Settings::setCatSettings()
     food = Scale(Scale::DEFAULT_ADD_VALUE, Scale::DEFAULT_SUB_VALUE);
     sleep = Scale(Scale::DEFAULT_ADD_VALUE, Scale::DEFAULT_SUB_VALUE);
     mood = Scale(Scale::DEFAULT_ADD_VALUE, Scale::DEFAULT_SUB_VALUE);
-    clear = Scale(Scale::DEFAULT_ADD_VALUE, Scale::DEFAULT_SUB_VALUE);
+    clear = Scale(25, 2);
     health = Scale(Scale::DEFAULT_ADD_VALUE, Scale::DEFAULT_SUB_VALUE);
 }
 
@@ -62,7 +62,7 @@ void Settings::setPandaSettings()
 {
     // TODO: change to actual PANDA values
     food = Scale(Scale::DEFAULT_ADD_VALUE, Scale::DEFAULT_SUB_VALUE);
-    sleep = Scale(Scale::DEFAULT_ADD_VALUE, Scale::DEFAULT_SUB_VALUE);
+    sleep = Scale(25,2);
     mood = Scale(Scale::DEFAULT_ADD_VALUE, Scale::DEFAULT_SUB_VALUE);
     clear = Scale(Scale::DEFAULT_ADD_VALUE, Scale::DEFAULT_SUB_VALUE);
     health = Scale(Scale::DEFAULT_ADD_VALUE, Scale::DEFAULT_SUB_VALUE);

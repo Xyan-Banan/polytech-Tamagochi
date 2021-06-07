@@ -158,9 +158,9 @@ background-position: center;
       </spacer>
      </item>
      <item>
-      <layout class="QGridLayout" name="gridLayout_2">
+      <layout class="QGridLayout" name="gridLayout_5">
        <item row="0" column="0" rowspan="2">
-        <widget class="QLabel" name="label_6">
+        <widget class="QLabel" name="label_15">
          <property name="maximumSize">
           <size>
            <width>50</width>
@@ -171,7 +171,7 @@ background-position: center;
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="Resources.qrc">:/icons/icon_sleep</pixmap>
+          <pixmap resource="Resources.qrc">:/icons/icon_clear</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -179,7 +179,7 @@ background-position: center;
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QProgressBar" name="sleepProgressBar">
+        <widget class="QProgressBar" name="clearProgressBar">
          <property name="styleSheet">
           <string notr="true"/>
          </property>
@@ -200,7 +200,7 @@ background-position: center;
       </layout>
      </item>
      <item>
-      <spacer name="horizontalSpacer_2">
+      <spacer name="horizontalSpacer_3">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -255,7 +255,7 @@ background-position: center;
       </layout>
      </item>
      <item>
-      <spacer name="horizontalSpacer_3">
+      <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -268,9 +268,9 @@ background-position: center;
       </spacer>
      </item>
      <item>
-      <layout class="QGridLayout" name="gridLayout_5">
+      <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="0" rowspan="2">
-        <widget class="QLabel" name="label_15">
+        <widget class="QLabel" name="label_6">
          <property name="maximumSize">
           <size>
            <width>50</width>
@@ -281,7 +281,7 @@ background-position: center;
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="Resources.qrc">:/icons/icon_clear</pixmap>
+          <pixmap resource="Resources.qrc">:/icons/icon_sleep</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -289,7 +289,7 @@ background-position: center;
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QProgressBar" name="clearProgressBar">
+        <widget class="QProgressBar" name="sleepProgressBar">
          <property name="styleSheet">
           <string notr="true"/>
          </property>
@@ -390,8 +390,8 @@ background-position: center;
      <rect>
       <x>700</x>
       <y>190</y>
-      <width>52</width>
-      <height>341</height>
+      <width>58</width>
+      <height>342</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="queueLayout">
@@ -809,10 +809,10 @@ QPushButton:pressed {
    <widget class="QLabel" name="timerLabel">
     <property name="geometry">
      <rect>
-      <x>696</x>
+      <x>735</x>
       <y>227</y>
-      <width>50</width>
-      <height>13</height>
+      <width>21</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
@@ -825,6 +825,11 @@ QPushButton:pressed {
       <strikeout>false</strikeout>
       <kerning>true</kerning>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: white;
+border-radius: 10px;
+border: 1px solid black;</string>
     </property>
     <property name="text">
      <string>Time!</string>
