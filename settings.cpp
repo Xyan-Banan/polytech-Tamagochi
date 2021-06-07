@@ -1,7 +1,5 @@
 #include "settings.h"
 
-//QQueue<Action> Settings::actionQueue = QQueue<Action>();
-
 Settings::Settings(){
     switch (character) {
     case Character::DOG: setDogSettings(); break;
@@ -10,15 +8,6 @@ Settings::Settings(){
     case Character::NONE:
     default: setDefaultSettings(); break;
     }
-}
-
-Settings::Settings(std::map<QString,QProgressBar*> progressBars)
-{
-//    food = Scale(progressBars.at("food"));
-//    sleep = Scale(progressBars.at("sleep"));
-//    mood = Scale(progressBars.at("mood"));
-//    clear = Scale(progressBars.at("clear"));
-    health = Scale(progressBars.at("health"));
 }
 
 void Settings::updateProgressBars()

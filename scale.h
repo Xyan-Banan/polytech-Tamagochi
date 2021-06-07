@@ -50,7 +50,7 @@ public:
     int getCurValue() {return curValue;}
     int getAddValue() {return addValue;}
     int getSubValue() {return subValue;}
-    void setCurValue(int);
+    void dropCurValue();
 
     bool isCurValEmpty() {return curValue == 0;}
     //increment/decrements current value with check and update curValueLabel text

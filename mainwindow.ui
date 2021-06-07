@@ -806,12 +806,12 @@ QPushButton:pressed {
      </item>
     </layout>
    </widget>
-   <widget class="QLabel" name="timerLabel">
+   <widget class="QLabel" name="actionTimerLabel">
     <property name="geometry">
      <rect>
       <x>735</x>
       <y>227</y>
-      <width>21</width>
+      <width>20</width>
       <height>20</height>
      </rect>
     </property>
@@ -832,10 +832,10 @@ border-radius: 10px;
 border: 1px solid black;</string>
     </property>
     <property name="text">
-     <string>Time!</string>
+     <string>5</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>

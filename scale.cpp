@@ -1,5 +1,10 @@
 #include "scale.h"
 
+void Scale::dropCurValue() {
+    curValue = 0;
+    updateProgressBar();
+}
+
 void Scale::incCurValue() {
     if(curValue < maxValue) {
         curValue++;
@@ -43,9 +48,4 @@ bool Scale::connectProgressBar(QProgressBar * pB)
     }
 
     return false;
-}
-
-void Scale::setCurValue(int newCurValue)
-{
-    curValue = newCurValue;
 }
